@@ -9,7 +9,20 @@ enum loyalty{//default values would be 0,1,2
     BRONZE_USER = 'BRONZE_USER'
 }
 // Reviews
-const reviews : any[] = [
+const reviews : (
+    { 
+        name: string; 
+        stars: number; 
+        loyaltyUser: loyalty; 
+        description?:string
+        date: string;
+    }|{ 
+    name: string; 
+    stars: number; 
+    loyaltyUser: loyalty; 
+    description?:string
+    date: string;
+    })[] = [
     {
         name: 'Sheia',
         stars: 5,
