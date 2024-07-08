@@ -2,7 +2,7 @@ const reviewTotalDisplay = document.querySelector('#reviews')
 const returningUserDisplay = document.querySelector('#returning-user')
 const userNameDisplay = document.querySelector('#user')
 import { loyalty } from './enums'
-export function showReviewTotal(value: number, reviewer: string, isLoyalty: loyalty) {
+export function showReviewTotal(value: number, reviewer: string, isLoyalty: loyalty) : void {
     const iconDisplay = loyalty.GOLD_USER ? '⭐' : ''
     reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer + ' ' + iconDisplay
 }
@@ -14,7 +14,7 @@ export function populateUser(isReturning : boolean, userName: string ) {
     userNameDisplay.innerHTML = userName
 }
 function add(firstValue:(string|number), secondValue:(string|number)) {
-    let result
+    let result:(string|number)
     if (typeof firstValue === 'number' && typeof secondValue === 'number') {
         result = firstValue + secondValue
     }

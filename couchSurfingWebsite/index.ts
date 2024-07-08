@@ -3,7 +3,7 @@ const footer = document.querySelector('.footer')
 let isLoggedIn: boolean
 import { Permissions , loyalty} from './enums'
 import { showReviewTotal, populateUser } from './utils'
-import { Price, Country } from './types'
+import { Country } from './types'
 let isOpen: boolean
 
 // Reviews
@@ -65,12 +65,11 @@ const you= {
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
-
 // Array of Properties
 const properties : {
     image: string;
     title: string;
-    price: Price;
+    price: number;
     location: {
         firstLine: string;
         city: string;
@@ -96,7 +95,7 @@ const properties : {
     {
         image: 'images/poland-property.jpg',
         title: 'Polish Cottage',
-        price: 30,
+        price: 34,
         location: {
             firstLine: 'no 23',
             city: 'Gdansk',
@@ -109,7 +108,7 @@ const properties : {
     {
         image: 'images/london-property.jpg',
         title: 'London Flat',
-        price: 25,
+        price: 23,
         location: {
             firstLine: 'flat 15',
             city: 'London',
