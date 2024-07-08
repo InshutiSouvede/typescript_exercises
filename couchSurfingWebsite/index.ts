@@ -1,7 +1,7 @@
 // Object Types Challenge
 // Based on what we discussed we need to make up our Property Objects and array,
 // can you create that array, making sure to assign the correct Types?
-
+const propertyContainer = document.querySelector('.properties')
 import { showReviewTotal, populateUser } from './utils'
 let isOpen: boolean
 
@@ -10,7 +10,7 @@ const reviews : {
     name: string; 
     stars: number; 
     loyaltyUser: boolean; 
-    date: string
+    date: string;
     }[] = [
     {
         name: 'Sheia',
@@ -38,7 +38,7 @@ const you: {
     lastName: string;
     isReturning: boolean;
     age: number;
-    stayedAt: string[]
+    stayedAt: string[];
 } = {
     firstName: 'Bobby',
     lastName: 'Brown',
@@ -107,3 +107,12 @@ showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
+for(let i=0;i<properties.length;i++){
+    const card = document.createElement('div')
+    card.classList.add('card')
+    card.innerHTML = properties[i].title
+    const img = document.createElement('img')
+    img.setAttribute('src',properties[i].image)
+    card.appendChild(img)
+    propertyContainer.append(card)
+}

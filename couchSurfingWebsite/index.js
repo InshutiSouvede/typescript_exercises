@@ -1,8 +1,9 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // Object Types Challenge
 // Based on what we discussed we need to make up our Property Objects and array,
 // can you create that array, making sure to assign the correct Types?
-Object.defineProperty(exports, "__esModule", { value: true });
+var propertyContainer = document.querySelector('.properties');
 var utils_1 = require("./utils");
 var isOpen;
 // Reviews
@@ -79,3 +80,12 @@ var properties = [
 // Functions
 (0, utils_1.showReviewTotal)(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 (0, utils_1.populateUser)(you.isReturning, you.firstName);
+for (var i = 0; i < properties.length; i++) {
+    var card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = properties[i].title;
+    var img = document.createElement('img');
+    img.setAttribute('src', properties[i].image);
+    card.appendChild(img);
+    propertyContainer.append(card);
+}
