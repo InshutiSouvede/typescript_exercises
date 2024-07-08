@@ -1,13 +1,17 @@
-const reviewTotalDisplay = document.querySelector('#reviews')
-const returningUserDisplay = document.querySelector('#returning-user')
-const userNameDisplay = document.querySelector('#user')
-const age = 23
-const reviews:{
-    name:string;
-    stars:number;
-    loyaltyUser:boolean;
-    date:string
-}[] = [
+// Object Types Challenge
+// Based on what we discussed we need to make up our Property Objects and array,
+// can you create that array, making sure to assign the correct Types?
+
+import { showReviewTotal, populateUser } from './utils'
+let isOpen: boolean
+
+// Reviews
+const reviews : { 
+    name: string; 
+    stars: number; 
+    loyaltyUser: boolean; 
+    date: string
+    }[] = [
     {
         name: 'Sheia',
         stars: 5,
@@ -27,38 +31,79 @@ const reviews:{
         date: '27-03-2021'
     },
 ]
-function showReviewTotal(value: number) {
-    reviewTotalDisplay.innerHTML = 'review total' + value.toString() + '⭐'
-}
-function mostRecentReviewer(value: number, name: string) {
-    reviewTotalDisplay.innerHTML = 'review total' + value.toString() + " | last reviewed by " + name
-}
-function reviewReviewerStatus(value: number, name: string, loyaltyUser: boolean) {
-    reviewTotalDisplay.innerHTML = `review total${value.toString()} | last reviewed by ${name} ${loyaltyUser ? '⭐' : ''}`
-}
-showReviewTotal(reviews.length)
-mostRecentReviewer(reviews.length, reviews[0].name)
-reviewReviewerStatus(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
+// User
 const you: {
     firstName: string;
     lastName: string;
     isReturning: boolean;
-    age:number;
-    stayedAt:string[];
+    age: number;
+    stayedAt: string[]
 } = {
     firstName: 'Bobby',
     lastName: 'Brown',
     isReturning: true,
-    age:35,
+    age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
+// Properties
 
-
-function populateUser(isReturning: boolean, userName: string) {
-    if (isReturning) {
-        returningUserDisplay.innerHTML = 'back'
+const properties:{
+    image:string;
+    title:string;
+    price:number;
+    location:{
+        firstLine:string;
+        city:string;
+        code:number;
+        country:string;
+    };   
+    contact:string;
+    isAvailable:boolean;
+}[] = [
+    {
+        image: '',
+        title: 'Colombian Shack',
+        price: 45,
+        location: {
+            firstLine: 'shack 37',
+            city: 'Bogota',
+            code: 45632,
+            country: 'Colombia'
+        },
+        contact: 'marywinkle@gmail.com',
+        isAvailable: true  
+    },
+    {
+        image: '',
+        title: 'Polish Cottage',
+        price: 34,
+        location: {
+            firstLine: 'no 23',
+            city: 'Gdansk',
+            code: 343903,
+            country: 'Poland' 
+        },
+        contact: 'garydavis@hotmail.com',
+        isAvailable: false 
+    },
+    {
+        image: '',
+        title: 'London Flat',
+        price: 23,
+        location: {
+            firstLine: 'flat 15',
+            city: 'London',
+            code: 35433,
+            country: 'United Kingdom'
+        },
+        contact: 'andyluger@hotmail.com',
+        isAvailable: true 
     }
-    userNameDisplay.innerHTML = userName
-}
+]
+
+// Functions
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
+
 populateUser(you.isReturning, you.firstName)
+
