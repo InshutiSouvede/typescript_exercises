@@ -1,13 +1,10 @@
 const propertyContainer = document.querySelector('.properties')
 const footer = document.querySelector('.footer')
-
+let isLoggedIn: boolean
+import { Permissions , loyalty} from './enums'
 import { showReviewTotal, populateUser } from './utils'
 let isOpen: boolean
-enum loyalty{//default values would be 0,1,2
-    GOLD_USER = 'GOLD_USER',
-    SILVER_USER ='SILVER_USER',
-    BRONZE_USER = 'BRONZE_USER'
-}
+
 // Reviews
 const reviews : (
     { 
@@ -59,15 +56,10 @@ const reviews : (
 //     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 // }
 
-enum Permissions {
-    ADMIN='admin',
-    READ_ONLY = 12
-}
-
 const you= {
     firstName: 'Bobby',
     lastName: 'Brown',
-    permissions:Permissions.ADMIN,
+    permissions:null,//What happens with null permission
     isReturning: true,
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
@@ -134,6 +126,16 @@ showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
+let authorityStatus : any
+
+function showDetails(authorityStatus: (boolean|Permissions), element : HTMLDivElement, price: number) {
+   if (authorityStatus) {
+       const priceDisplay = document.createElement('div')
+       priceDisplay.innerHTML = price.toString() + '/night'
+       element.appendChild(priceDisplay)
+   }
+}
+
 // Add the properties
 for (let i = 0; i < properties.length; i++) {
     const card = document.createElement('div')
@@ -143,6 +145,7 @@ for (let i = 0; i < properties.length; i++) {
     image.setAttribute('src', properties[i].image)
     card.appendChild(image)
     propertyContainer.appendChild(card)
+    showDetails(you.permissions,card,properties[i].price)
 }
 let currentLocation:[string,string,number] = ['Rwanda','15:19',29]
 footer.innerHTML = currentLocation.join(' ')+'° C'

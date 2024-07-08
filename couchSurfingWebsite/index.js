@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var propertyContainer = document.querySelector('.properties');
 var footer = document.querySelector('.footer');
+var isLoggedIn;
+var enums_1 = require("./enums");
 var utils_1 = require("./utils");
 var isOpen;
 // Reviews
@@ -9,20 +11,21 @@ var reviews = [
     {
         name: 'Sheia',
         stars: 5,
-        loyaltyUser: true,
+        loyaltyUser: enums_1.loyalty.GOLD_USER,
         date: '01-04-2021'
     },
     {
         name: 'Andrzej',
         stars: 3,
-        loyaltyUser: false,
+        loyaltyUser: enums_1.loyalty.BRONZE_USER,
         date: '28-03-2021'
     },
     {
         name: 'Omar',
         stars: 4,
-        loyaltyUser: true,
-        date: '27-03-2021'
+        loyaltyUser: enums_1.loyalty.SILVER_USER,
+        date: '27-03-2021',
+        description: "Great hosts, location was a bit further than said"
     },
 ];
 // User
@@ -39,15 +42,10 @@ var reviews = [
 //     age: 35,
 //     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 // }
-var Permissions;
-(function (Permissions) {
-    Permissions["ADMIN"] = "admin";
-    Permissions[Permissions["READ_ONLY"] = 12] = "READ_ONLY";
-})(Permissions || (Permissions = {}));
 var you = {
     firstName: 'Bobby',
     lastName: 'Brown',
-    permissions: Permissions.ADMIN,
+    permissions: null, //What happens with null permission
     isReturning: true,
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
@@ -97,6 +95,14 @@ var properties = [
 // Functions
 (0, utils_1.showReviewTotal)(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 (0, utils_1.populateUser)(you.isReturning, you.firstName);
+var authorityStatus;
+function showDetails(authorityStatus, element, price) {
+    if (authorityStatus) {
+        var priceDisplay = document.createElement('div');
+        priceDisplay.innerHTML = price.toString() + '/night';
+        element.appendChild(priceDisplay);
+    }
+}
 // Add the properties
 for (var i = 0; i < properties.length; i++) {
     var card = document.createElement('div');
@@ -106,6 +112,7 @@ for (var i = 0; i < properties.length; i++) {
     image.setAttribute('src', properties[i].image);
     card.appendChild(image);
     propertyContainer.appendChild(card);
+    showDetails(you.permissions, card, properties[i].price);
 }
 var currentLocation = ['Rwanda', '15:19', 29];
 footer.innerHTML = currentLocation.join(' ') + '° C';
