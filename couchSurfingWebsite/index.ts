@@ -1,10 +1,5 @@
-// Tuple Types
-// 1. Replace the contact values to take an array that contains a
-// phone number and email.
-// 2. Check the inferred Type that appears in the Object Type.
-// 3. Overwrite the inferred type to be a Tuple.
-
 const propertyContainer = document.querySelector('.properties')
+const footer = document.querySelector('.footer')
 
 import { showReviewTotal, populateUser } from './utils'
 let isOpen: boolean
@@ -122,4 +117,5 @@ for (let i = 0; i < properties.length; i++) {
     card.appendChild(image)
     propertyContainer.appendChild(card)
 }
-
+let currentLocation:[string,string,number] = ['Rwanda','15:19',29]
+footer.innerHTML = currentLocation.join(' ')+'° C'
