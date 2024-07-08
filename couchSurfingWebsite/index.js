@@ -37,7 +37,7 @@ var you = {
 // Properties
 var properties = [
     {
-        image: '',
+        image: 'images/colombia-property.jpg',
         title: 'Colombian Shack',
         price: 45,
         location: {
@@ -51,7 +51,7 @@ var properties = [
     },
     {
         image: '',
-        title: 'Polish Cottage',
+        title: 'images/poland-property.jpg',
         price: 34,
         location: {
             firstLine: 'no 23',
@@ -63,7 +63,7 @@ var properties = [
         isAvailable: false
     },
     {
-        image: '',
+        image: 'images/landon-property',
         title: 'London Flat',
         price: 23,
         location: {
