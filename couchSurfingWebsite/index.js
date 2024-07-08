@@ -1,9 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// Object Types Challenge
-// Based on what we discussed we need to make up our Property Objects and array,
-// can you create that array, making sure to assign the correct Types?
 var propertyContainer = document.querySelector('.properties');
+var footer = document.querySelector('.footer');
 var utils_1 = require("./utils");
 var isOpen;
 // Reviews
@@ -28,14 +26,33 @@ var reviews = [
     },
 ];
 // User
+// const you: {
+//     firstName: string;
+//     lastName: string;
+//     isReturning: boolean;
+//     age: number;
+//     stayedAt: string[]
+// } = {
+//     firstName: 'Bobby',
+//     lastName: 'Brown',
+//     isReturning: true,
+//     age: 35,
+//     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
+// }
+var Permissions;
+(function (Permissions) {
+    Permissions["ADMIN"] = "admin";
+    Permissions[Permissions["READ_ONLY"] = 12] = "READ_ONLY";
+})(Permissions || (Permissions = {}));
 var you = {
     firstName: 'Bobby',
     lastName: 'Brown',
+    permissions: Permissions.ADMIN,
     isReturning: true,
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 };
-// Properties
+// Array of Properties
 var properties = [
     {
         image: 'images/colombia-property.jpg',
@@ -47,12 +64,12 @@ var properties = [
             code: 45632,
             country: 'Colombia'
         },
-        contact: 'marywinkle@gmail.com',
+        contact: [+'1123495082908', 'marywinkle@gmail.com'],
         isAvailable: true
     },
     {
-        image: '',
-        title: 'images/poland-property.jpg',
+        image: 'images/poland-property.jpg',
+        title: 'Polish Cottage',
         price: 34,
         location: {
             firstLine: 'no 23',
@@ -60,32 +77,35 @@ var properties = [
             code: 343903,
             country: 'Poland'
         },
-        contact: 'garydavis@hotmail.com',
+        contact: [+1123495082908, 'garydavis@hotmail.com'],
         isAvailable: false
     },
     {
-        image: 'images/landon-property',
+        image: 'images/london-property.jpg',
         title: 'London Flat',
         price: 23,
         location: {
             firstLine: 'flat 15',
             city: 'London',
             code: 35433,
-            country: 'United Kingdom'
+            country: 'United Kingdom',
         },
-        contact: 'andyluger@hotmail.com',
+        contact: [+1123495082908, 'andyluger@aol.com'],
         isAvailable: true
     }
 ];
 // Functions
 (0, utils_1.showReviewTotal)(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 (0, utils_1.populateUser)(you.isReturning, you.firstName);
+// Add the properties
 for (var i = 0; i < properties.length; i++) {
     var card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = properties[i].title;
-    var img = document.createElement('img');
-    img.setAttribute('src', properties[i].image);
-    card.appendChild(img);
-    propertyContainer.append(card);
+    var image = document.createElement('img');
+    image.setAttribute('src', properties[i].image);
+    card.appendChild(image);
+    propertyContainer.appendChild(card);
 }
+var currentLocation = ['Rwanda', '15:19', 29];
+footer.innerHTML = currentLocation.join(' ') + '° C';
