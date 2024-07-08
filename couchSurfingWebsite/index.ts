@@ -3,30 +3,34 @@ const footer = document.querySelector('.footer')
 
 import { showReviewTotal, populateUser } from './utils'
 let isOpen: boolean
-
+enum loyalty{//default values would be 0,1,2
+    GOLD_USER = 'GOLD_USER',
+    SILVER_USER ='SILVER_USER',
+    BRONZE_USER = 'BRONZE_USER'
+}
 // Reviews
 const reviews : { 
     name: string; 
     stars: number; 
-    loyaltyUser: boolean; 
+    loyaltyUser: loyalty; 
     date: string
     }[] = [
     {
         name: 'Sheia',
         stars: 5,
-        loyaltyUser: true,
+        loyaltyUser: loyalty.GOLD_USER,
         date: '01-04-2021'
     },
     {
         name: 'Andrzej',
         stars: 3,
-        loyaltyUser: false,
+        loyaltyUser: loyalty.BRONZE_USER,
         date: '28-03-2021'
     },
     {
         name: 'Omar',
         stars: 4,
-        loyaltyUser: true,
+        loyaltyUser: loyalty.SILVER_USER,
         date: '27-03-2021'
     },
 ]
