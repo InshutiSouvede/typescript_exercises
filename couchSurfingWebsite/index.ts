@@ -6,7 +6,7 @@ const footer = document.querySelector('.footer')
 let isLoggedIn: boolean
 import { Permissions , loyalty} from './enums'
 import { showReviewTotal,showDetails, populateUser,getTopTwoReviews} from './utils' //multiple exports
-import  Review  from './interfaces'//one export
+import  {Review,Property}  from './interfaces'//one export
 import { Country } from './types'
 let isOpen: boolean
 
@@ -59,19 +59,7 @@ const you= {
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 // Array of Properties
-const properties : {
-    image: string;
-    title: string;
-    price: number;
-    location: {
-        firstLine: string;
-        city: string;
-        code: number;
-        country: Country;
-    };
-    contact: [number, string];
-    isAvailable: boolean;
-}[] = [
+const properties : Property[] = [
     {
         image: 'images/colombia-property.jpg',
         title: 'Colombian Shack',
@@ -167,13 +155,38 @@ footer.innerHTML = currentLocation.join(' ')+'° C'
 // }
 
 
-class Image {
+// class Image {
+//     src: string
+//     title:string
+//     reviews: Review[]
+//     constructor(src: string,
+//         title:string,
+//         reviews: Review[]) {
+//         Object.assign(this,{src,title,reviews})
+//     }
+// }
+
+class MainProperty {
     src: string
-    title:string
+    title: string
     reviews: Review[]
-    constructor(src: string,
-        title:string,
-        reviews: Review[]) {
-        Object.assign(this,{src,title,reviews})
+    constructor(src: string, title: string, reviews: Review[]) {
+        this.src = src
+        this.title = title
+        this.reviews = reviews
     }
 }
+let yourMainProperty = new MainProperty(
+    'images/italian-property.jpg', 
+    'Italian House',
+    [{
+        name: 'Olive',
+        stars: 5,
+        loyaltyUser: loyalty.GOLD_USER,
+        date: '12-04-2021'
+    }] )
+
+const mainImageContainer = document.querySelector('.main-image')
+const image = document.createElement('img')
+image.setAttribute('src', yourMainProperty.src)
+mainImageContainer.appendChild(image)

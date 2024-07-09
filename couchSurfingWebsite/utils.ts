@@ -2,7 +2,7 @@ const reviewTotalDisplay = document.querySelector('#reviews')
 const returningUserDisplay = document.querySelector('#returning-user')
 const userNameDisplay = document.querySelector('#user')
 import { loyalty } from './enums'
-import Review from './interfaces'
+import {Review} from './interfaces'
 export function showReviewTotal(value: number, reviewer: string, isLoyalty: loyalty): void {
     const iconDisplay = loyalty.GOLD_USER ? '⭐' : ''
     reviewTotalDisplay.innerHTML = + value.toString() + "review" + makeMultiple(value) + ' | last reviewed by ' + reviewer + ' ' + iconDisplay
