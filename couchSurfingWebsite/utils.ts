@@ -4,7 +4,7 @@ const userNameDisplay = document.querySelector('#user')
 import { loyalty } from './enums'
 export function showReviewTotal(value: number, reviewer: string, isLoyalty: loyalty) : void {
     const iconDisplay = loyalty.GOLD_USER ? '⭐' : ''
-    reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer + ' ' + iconDisplay
+    reviewTotalDisplay.innerHTML = + value.toString() +"review"+makeMultiple(value)+ ' | last reviewed by ' + reviewer + ' ' + iconDisplay
 }
 
 export function populateUser(isReturning : boolean, userName: string ) {
@@ -12,6 +12,18 @@ export function populateUser(isReturning : boolean, userName: string ) {
         returningUserDisplay.innerHTML = 'back'
     }
     userNameDisplay.innerHTML = userName
+}
+export function showDetails(authorityStatus: (boolean|Permissions), element : HTMLDivElement, price: number) {
+    if (authorityStatus) {
+        const priceDisplay = document.createElement('div')
+        priceDisplay.innerHTML = price.toString() + '/night'
+        element.appendChild(priceDisplay)
+    }
+ }
+ export function makeMultiple(value: number):string {
+    if (value > 1 || value == 0 ) {
+        return 's'
+    } else return ''
 }
 function add(firstValue:(string|number), secondValue:(string|number)) {
     let result:(string|number)

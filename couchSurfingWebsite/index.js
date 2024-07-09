@@ -96,13 +96,6 @@ var properties = [
 (0, utils_1.showReviewTotal)(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 (0, utils_1.populateUser)(you.isReturning, you.firstName);
 var authorityStatus;
-function showDetails(authorityStatus, element, price) {
-    if (authorityStatus) {
-        var priceDisplay = document.createElement('div');
-        priceDisplay.innerHTML = price.toString() + '/night';
-        element.appendChild(priceDisplay);
-    }
-}
 // Add the properties
 for (var i = 0; i < properties.length; i++) {
     var card = document.createElement('div');
@@ -112,7 +105,7 @@ for (var i = 0; i < properties.length; i++) {
     image.setAttribute('src', properties[i].image);
     card.appendChild(image);
     propertyContainer.appendChild(card);
-    showDetails(you.permissions, card, properties[i].price);
+    (0, utils_1.showDetails)(you.permissions, card, properties[i].price);
 }
 var currentLocation = ['Rwanda', '15:19', 29];
 footer.innerHTML = currentLocation.join(' ') + '° C';

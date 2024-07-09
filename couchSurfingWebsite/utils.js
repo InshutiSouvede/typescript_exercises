@@ -2,19 +2,35 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.showReviewTotal = showReviewTotal;
 exports.populateUser = populateUser;
+exports.showDetails = showDetails;
+exports.makeMultiple = makeMultiple;
 var reviewTotalDisplay = document.querySelector('#reviews');
 var returningUserDisplay = document.querySelector('#returning-user');
 var userNameDisplay = document.querySelector('#user');
 var enums_1 = require("./enums");
 function showReviewTotal(value, reviewer, isLoyalty) {
     var iconDisplay = enums_1.loyalty.GOLD_USER ? '⭐' : '';
-    reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer + ' ' + iconDisplay;
+    reviewTotalDisplay.innerHTML = +value.toString() + "review" + makeMultiple(value) + ' | last reviewed by ' + reviewer + ' ' + iconDisplay;
 }
 function populateUser(isReturning, userName) {
     if (isReturning == true) {
         returningUserDisplay.innerHTML = 'back';
     }
     userNameDisplay.innerHTML = userName;
+}
+function showDetails(authorityStatus, element, price) {
+    if (authorityStatus) {
+        var priceDisplay = document.createElement('div');
+        priceDisplay.innerHTML = price.toString() + '/night';
+        element.appendChild(priceDisplay);
+    }
+}
+function makeMultiple(value) {
+    if (value > 1 || value == 0) {
+        return 's';
+    }
+    else
+        return '';
 }
 function add(firstValue, secondValue) {
     var result;
