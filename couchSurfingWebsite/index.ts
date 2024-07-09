@@ -5,8 +5,9 @@ const button = document.querySelector('button')
 const footer = document.querySelector('.footer')
 
 import {loyalty} from './enums'
+import MainProperty from './classes'//one export
 import { showReviewTotal,showDetails, populateUser,getTopTwoReviews} from './utils' //multiple exports
-import  {Review,Property}  from './interfaces'//one export
+import  {Review,Property}  from './interfaces'
 
 let isOpen: boolean
 
@@ -155,40 +156,7 @@ button.addEventListener('click', () => addReviews(reviews))
 let currentLocation:[string,string,number] = ['Rwanda','15:19',29]
 footer.innerHTML = currentLocation.join(' ')+'° C'
 
-//Classes
-// class Car {
-//     make: string
-//     year: number
-//     color: string
-//     constructor(make: string, year: number, color: string) {
-//         this.make = make
-//         this.year = year
-//         this.color = color
-//     }
-// }
 
-
-// class Image {
-//     src: string
-//     title:string
-//     reviews: Review[]
-//     constructor(src: string,
-//         title:string,
-//         reviews: Review[]) {
-//         Object.assign(this,{src,title,reviews})
-//     }
-// }
-
-class MainProperty {
-    src: string
-    title: string
-    reviews: Review[]
-    constructor(src: string, title: string, reviews: Review[]) {
-        this.src = src
-        this.title = title
-        this.reviews = reviews
-    }
-}
 let yourMainProperty = new MainProperty(
     'images/italian-property.jpg', 
     'Italian House',
