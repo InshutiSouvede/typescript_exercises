@@ -3,11 +3,11 @@ const reviewContainer = document.querySelector('.reviews')
 const container = document.querySelector('.container')
 const button = document.querySelector('button')
 const footer = document.querySelector('.footer')
-let isLoggedIn: boolean
-import { Permissions , loyalty} from './enums'
+
+import {loyalty} from './enums'
 import { showReviewTotal,showDetails, populateUser,getTopTwoReviews} from './utils' //multiple exports
 import  {Review,Property}  from './interfaces'//one export
-import { Country } from './types'
+
 let isOpen: boolean
 
 
