@@ -4,6 +4,7 @@ exports.showReviewTotal = showReviewTotal;
 exports.populateUser = populateUser;
 exports.showDetails = showDetails;
 exports.makeMultiple = makeMultiple;
+exports.getTopTwoReviews = getTopTwoReviews;
 var reviewTotalDisplay = document.querySelector('#reviews');
 var returningUserDisplay = document.querySelector('#returning-user');
 var userNameDisplay = document.querySelector('#user');
@@ -31,6 +32,10 @@ function makeMultiple(value) {
     }
     else
         return '';
+}
+function getTopTwoReviews(reviews) {
+    var sortedReviews = reviews.sort(function (a, b) { return b.stars - a.stars; });
+    return sortedReviews.slice(0, 2);
 }
 function add(firstValue, secondValue) {
     var result;

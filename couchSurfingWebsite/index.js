@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var propertyContainer = document.querySelector('.properties');
+var reviewContainer = document.querySelector('.reviews');
+var container = document.querySelector('.container');
+var button = document.querySelector('button');
 var footer = document.querySelector('.footer');
 var isLoggedIn;
 var enums_1 = require("./enums");
@@ -107,5 +110,20 @@ for (var i = 0; i < properties.length; i++) {
     propertyContainer.appendChild(card);
     (0, utils_1.showDetails)(you.permissions, card, properties[i].price);
 }
+var count = 0;
+function addReviews(reviews) {
+    if (!count) {
+        count++;
+        var topTwo = (0, utils_1.getTopTwoReviews)(reviews);
+        for (var i = 0; i < topTwo.length; i++) {
+            var card = document.createElement('div');
+            card.classList.add('review-card');
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name;
+            reviewContainer.appendChild(card);
+        }
+        container.removeChild(button);
+    }
+}
+button.addEventListener('click', function () { return addReviews(reviews); });
 var currentLocation = ['Rwanda', '15:19', 29];
 footer.innerHTML = currentLocation.join(' ') + '° C';
