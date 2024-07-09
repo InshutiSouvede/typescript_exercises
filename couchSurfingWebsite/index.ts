@@ -5,9 +5,12 @@ const button = document.querySelector('button')
 const footer = document.querySelector('.footer')
 let isLoggedIn: boolean
 import { Permissions , loyalty} from './enums'
-import { showReviewTotal,showDetails, populateUser,getTopTwoReviews} from './utils'
+import { showReviewTotal,showDetails, populateUser,getTopTwoReviews} from './utils' //multiple exports
+import  Review  from './interfaces'//one export
 import { Country } from './types'
 let isOpen: boolean
+
+
 
 // Reviews
 const reviews : (
@@ -45,20 +48,7 @@ const reviews : (
     },
 ]
 
-// User
-// const you: {
-//     firstName: string;
-//     lastName: string;
-//     isReturning: boolean;
-//     age: number;
-//     stayedAt: string[]
-// } = {
-//     firstName: 'Bobby',
-//     lastName: 'Brown',
-//     isReturning: true,
-//     age: 35,
-//     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
-// }
+
 
 const you= {
     firstName: 'Bobby',
@@ -145,12 +135,7 @@ for (let i = 0; i < properties.length; i++) {
     showDetails(you.permissions,card,properties[i].price)
 }
 let count = 0
-function addReviews(reviews: {
-    name: string;
-    stars:number;
-    loyaltyUser: loyalty;
-    date: string;
-}[]) : void {
+function addReviews(reviews:Review[]) : void {
     if (!count ) {
         count++
         const topTwo = getTopTwoReviews(reviews)
@@ -168,3 +153,27 @@ button.addEventListener('click', () => addReviews(reviews))
 
 let currentLocation:[string,string,number] = ['Rwanda','15:19',29]
 footer.innerHTML = currentLocation.join(' ')+'° C'
+
+//Classes
+// class Car {
+//     make: string
+//     year: number
+//     color: string
+//     constructor(make: string, year: number, color: string) {
+//         this.make = make
+//         this.year = year
+//         this.color = color
+//     }
+// }
+
+
+class Image {
+    src: string
+    title:string
+    reviews: Review[]
+    constructor(src: string,
+        title:string,
+        reviews: Review[]) {
+        Object.assign(this,{src,title,reviews})
+    }
+}
