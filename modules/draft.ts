@@ -8,6 +8,15 @@ const voider = (callback:()=>void)=>{
 //     throw new Error("error")
 // }
 voider(()=>myArry.push(5))
+function printName(obj: { first: string; last?: string }) {
+    // ...
+  }
+  // Both OK
+  printName({ first: "Bob" });
+  printName({ first: "Alice", last: "Alisson" });
+//   printName({...{ last: "Alisson",then:0 }});//error since first is mandatory and missing
+
+  printName({...{first: "Alice", last: "Alisson",then:0 }});
 //assertion =>dictation
 const myTupple:readonly[string,boolean, ...number[]]=["hi",false,1,2,3,4,5,6,6,345]
 const myArray: readonly (string|boolean|number)[]=["hi",false,1,2,3,4,5,6,6,true]

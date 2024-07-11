@@ -9,6 +9,14 @@ const voider = (callback) => {
 //     throw new Error("error")
 // }
 voider(() => myArry.push(5));
+function printName(obj) {
+    // ...
+}
+// Both OK
+printName({ first: "Bob" });
+printName({ first: "Alice", last: "Alisson" });
+//   printName({...{ last: "Alisson",then:0 }});//error since first is mandatory and missing
+printName(Object.assign({ first: "Alice", last: "Alisson", then: 0 }));
 //assertion =>dictation
 const myTupple = ["hi", false, 1, 2, 3, 4, 5, 6, 6, 345];
 const myArray = ["hi", false, 1, 2, 3, 4, 5, 6, 6, true];
