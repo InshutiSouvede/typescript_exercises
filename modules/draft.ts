@@ -17,13 +17,17 @@ function printName(obj: { first: string; last?: string }) {
 //   printName({...{ last: "Alisson",then:0 }});//error since first is mandatory and missing
 
   printName({...{first: "Alice", last: "Alisson",then:0 }});
-//assertion =>dictation
+
+  // Tupple vs array
 const myTupple:readonly[string,boolean, ...number[]]=["hi",false,1,2,3,4,5,6,6,345]
 const myArray: readonly (string|boolean|number)[]=["hi",false,1,2,3,4,5,6,6,true]
 // myT.push('hey')
 console.log('my tuple',myTupple)
-let n:unknown= 'fd'
-let s:number = n as number 
+
+//assertion =>dictation
+let n:string= String('fd')
+// let s:number = n as number//Conversion of type 'string' to type 'number' may be a mistake because neither type sufficiently overlaps with the other.
+let s:number = n as unknown as number
 
 //generics
 type OneOrMany<Type> = Type | Type[];
