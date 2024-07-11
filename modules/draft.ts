@@ -1,7 +1,34 @@
+//Using class as a type
+class Person {
+    name: string;
+    age: number;
+
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet():string {
+        console.log(`Hello, my name is ${this.name}`);
+        return 'bye'
+    }
+}
+
+// Using the Person class as a type
+function greetPerson(person: Person) {
+    
+    person.greet();
+}
+
+const john = new Person("John", 30);
+greetPerson(john);
+
 const myArry = []
-const voider = (callback:()=>void)=>{
+const voider = (callback:()=>void):void=>{
    console.log("there you go",callback);   
 //    throw new Error("error")
+
+return
 }
 // function voider(callback:()=>void){
 //     console.log("there you go",callback);   
@@ -19,13 +46,14 @@ function printName(obj: { first: string; last?: string }) {
   printName({...{first: "Alice", last: "Alisson",then:0 }});
 
   // Tupple vs array
-const myTupple:readonly[string,boolean, ...number[]]=["hi",false,1,2,3,4,5,6,6,345]
-const myArray: readonly (string|boolean|number)[]=["hi",false,1,2,3,4,5,6,6,true]
-// myT.push('hey')
-console.log('my tuple',myTupple)
+const myTupple:readonly[string,boolean, ...number[]]=["hi",false,1,2,3,4,5,6,6,6,345]
+const myArray: readonly (string|boolean|number)[]=["hi",1,2,3,4,5,6,6,false]
+// myTupple.push(false)
+// myArray.push(null)
+console.log('my tuple',myTupple,myArray)
 
 //assertion =>dictation
-let n:string= String('fd')
+let n:string= String(67)
 // let s:number = n as number//Conversion of type 'string' to type 'number' may be a mistake because neither type sufficiently overlaps with the other.
 let s:number = n as unknown as number
 
@@ -37,9 +65,12 @@ myOneOrMany = 5
 function useOneOrmany<T>(arg:OneOrMany<T>):OneOrMany<T>{
     console.log(arg);
     if(Array.isArray(arg)) return arg[0]
-    return arg
+    return [arg]
 }
-useOneOrmany([1,2,3,4])
+useOneOrmany(["2","h","j"])
+useOneOrmany([3,5,6])
+useOneOrmany("Hellp")
+useOneOrmany(1)
 // interface
 interface Dog {
     legs:number,
