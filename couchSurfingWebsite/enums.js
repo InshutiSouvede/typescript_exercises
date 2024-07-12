@@ -12,3 +12,4 @@ var Permissions;
     Permissions["ADMIN"] = "admin";
     Permissions[Permissions["READ_ONLY"] = 12] = "READ_ONLY";
 })(Permissions || (exports.Permissions = Permissions = {}));
+//# sourceMappingURL=enums.js.map

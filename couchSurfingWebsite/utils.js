@@ -5,12 +5,12 @@ exports.populateUser = populateUser;
 exports.showDetails = showDetails;
 exports.makeMultiple = makeMultiple;
 exports.getTopTwoReviews = getTopTwoReviews;
-var reviewTotalDisplay = document.querySelector('#reviews');
-var returningUserDisplay = document.querySelector('#returning-user');
-var userNameDisplay = document.querySelector('#user');
-var enums_1 = require("./enums");
+const reviewTotalDisplay = document.querySelector('#reviews');
+const returningUserDisplay = document.querySelector('#returning-user');
+const userNameDisplay = document.querySelector('#user');
+const enums_1 = require("./enums");
 function showReviewTotal(value, reviewer, isLoyalty) {
-    var iconDisplay = enums_1.loyalty.GOLD_USER ? '⭐' : '';
+    const iconDisplay = enums_1.loyalty.GOLD_USER ? '⭐' : '';
     reviewTotalDisplay.innerHTML = +value.toString() + "review" + makeMultiple(value) + ' | last reviewed by ' + reviewer + ' ' + iconDisplay;
 }
 function populateUser(isReturning, userName) {
@@ -21,7 +21,7 @@ function populateUser(isReturning, userName) {
 }
 function showDetails(authorityStatus, element, price) {
     if (authorityStatus) {
-        var priceDisplay = document.createElement('div');
+        const priceDisplay = document.createElement('div');
         priceDisplay.innerHTML = price.toString() + '/night';
         element.appendChild(priceDisplay);
     }
@@ -34,11 +34,11 @@ function makeMultiple(value) {
         return '';
 }
 function getTopTwoReviews(reviews) {
-    var sortedReviews = reviews.sort(function (a, b) { return b.stars - a.stars; });
+    const sortedReviews = reviews.sort((a, b) => b.stars - a.stars);
     return sortedReviews.slice(0, 2);
 }
 function add(firstValue, secondValue) {
-    var result;
+    let result;
     if (typeof firstValue === 'number' && typeof secondValue === 'number') {
         result = firstValue + secondValue;
     }
@@ -52,5 +52,6 @@ function add(firstValue, secondValue) {
         console.log('cannot perform this addition');
     }
 }
-var combinedReviews = add(5, 1);
-var firstNameLastName = add('Souvede', 'Inshuti');
+const combinedReviews = add(5, 1);
+const firstNameLastName = add('Souvede', 'Inshuti');
+//# sourceMappingURL=utils.js.map

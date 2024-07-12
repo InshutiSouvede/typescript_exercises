@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var propertyContainer = document.querySelector('.properties');
-var reviewContainer = document.querySelector('.reviews');
-var container = document.querySelector('.container');
-var button = document.querySelector('button');
-var footer = document.querySelector('.footer');
-var enums_1 = require("./enums");
-var classes_1 = require("./classes"); //one export
-var utils_1 = require("./utils"); //multiple exports
-var isOpen;
+const propertyContainer = document.querySelector('.properties');
+const reviewContainer = document.querySelector('.reviews');
+const container = document.querySelector('.container');
+const button = document.querySelector('button');
+const footer = document.querySelector('.footer');
+const enums_1 = require("./enums");
+const classes_1 = require("./classes"); //one export
+const utils_1 = require("./utils"); //multiple exports
+let isOpen;
 // Reviews
-var reviews = [
+const reviews = [
     {
         name: 'Sheia',
         stars: 5,
@@ -31,7 +31,7 @@ var reviews = [
         description: "Great hosts, location was a bit further than said"
     },
 ];
-var you = {
+const you = {
     firstName: 'Bobby',
     lastName: 'Brown',
     permissions: null, //What happens with null permission
@@ -40,7 +40,7 @@ var you = {
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 };
 // Array of Properties
-var properties = [
+const properties = [
     {
         image: 'images/colombia-property.jpg',
         title: 'Colombian Shack',
@@ -97,25 +97,25 @@ var properties = [
 // Functions
 (0, utils_1.showReviewTotal)(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 (0, utils_1.populateUser)(you.isReturning, you.firstName);
-var authorityStatus;
+let authorityStatus;
 // Add the properties
-for (var i = 0; i < properties.length; i++) {
-    var card = document.createElement('div');
+for (let i = 0; i < properties.length; i++) {
+    const card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = properties[i].title;
-    var image_1 = document.createElement('img');
-    image_1.setAttribute('src', properties[i].image);
-    card.appendChild(image_1);
+    const image = document.createElement('img');
+    image.setAttribute('src', properties[i].image);
+    card.appendChild(image);
     propertyContainer.appendChild(card);
     (0, utils_1.showDetails)(you.permissions, card, properties[i].price);
 }
-var count = 0;
+let count = 0;
 function addReviews(reviews) {
     if (!count) {
         count++;
-        var topTwo = (0, utils_1.getTopTwoReviews)(reviews);
-        for (var i = 0; i < topTwo.length; i++) {
-            var card = document.createElement('div');
+        const topTwo = (0, utils_1.getTopTwoReviews)(reviews);
+        for (let i = 0; i < topTwo.length; i++) {
+            const card = document.createElement('div');
             card.classList.add('review-card');
             card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name;
             reviewContainer.appendChild(card);
@@ -123,16 +123,17 @@ function addReviews(reviews) {
         container.removeChild(button);
     }
 }
-button.addEventListener('click', function () { return addReviews(reviews); });
-var currentLocation = ['Rwanda', '15:19', 29];
+button.addEventListener('click', () => addReviews(reviews));
+let currentLocation = ['Rwanda', '15:19', 29];
 footer.innerHTML = currentLocation.join(' ') + '° C';
-var yourMainProperty = new classes_1.default('images/italian-property.jpg', 'Italian House', [{
+let yourMainProperty = new classes_1.default('images/italian-property.jpg', 'Italian House', [{
         name: 'Olive',
         stars: 5,
         loyaltyUser: enums_1.loyalty.GOLD_USER,
         date: '12-04-2021'
     }]);
-var mainImageContainer = document.querySelector('.main-image');
-var image = document.createElement('img');
+const mainImageContainer = document.querySelector('.main-image');
+const image = document.createElement('img');
 image.setAttribute('src', yourMainProperty.src);
 mainImageContainer.appendChild(image);
+//# sourceMappingURL=index.js.map
